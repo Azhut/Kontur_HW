@@ -50,7 +50,7 @@ class Point:
 
         :return: Словарь со средними временами
         """
-        last_30_days = range(1, 32)
+        last_30_days = range(1, 16)
         last_14_days = range(16, 32)
 
         return {
@@ -63,3 +63,25 @@ class Point:
             'issuance_30_days': self.get_average(self.issuance_times, last_30_days),
             'issuance_14_days': self.get_average(self.issuance_times, last_14_days)
         }
+
+    def analyze_problems(self, averages, threshold=0.1):
+        """
+        Анализирует данные для пункта на предмет проблем.
+        Если среднее время за последние 14 дней увеличилось более чем на threshold по сравнению с 30 днями,
+        считаем это проблемой.
+        """
+        problems = []
+        if averages['preparation_14_days'] > averages['preparation_30_days'] * (1 + threshold):
+            problems.append('Проблемы с подготовкой')
+        if averages['transportation_from_14_days'] > averages['transportation_from_30_days'] * (1 + threshold):
+            problems.append('Проблемы с транспортировкой из пункта')
+        if averages['transportation_to_14_days'] > averages['transportation_to_30_days'] * (1 + threshold):
+            problems.append('Проблемы с транспортировкой до пункта')
+        if averages['issuance_14_days'] > averages['issuance_30_days'] * (1 + threshold):
+            problems.append('Проблемы с выдачей')
+
+        return problems
+
+
+
+

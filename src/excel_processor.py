@@ -10,6 +10,11 @@ def process_excel(file_path):
     """
     df = pd.read_excel(file_path)
 
+    # Сортировка данных по столбцу "День приема заказа"
+    df.sort_values(by="День приема заказа", inplace=True)
+    # Вывод отсортированной таблицы в консоль
+
+
     points = {
         'А': Point('А'),
         'Б': Point('Б'),

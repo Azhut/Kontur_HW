@@ -34,7 +34,7 @@ def plot_data(points):
 
         fig, ax = plt.subplots(figsize=(10, 6))
 
-        bars_30 = ax.bar(x - width/2, data_30, width, label='Последние 30 дней', color=colors_30_days)
+        bars_30 = ax.bar(x - width/2, data_30, width, label='Первые 16 днем месяца', color=colors_30_days)
         bars_14 = ax.bar(x + width/2, data_14, width, label='Последние 14 дней', color=colors_14_days)
 
         ax.set_xlabel('Категории')

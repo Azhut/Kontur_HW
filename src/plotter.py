@@ -12,7 +12,7 @@ def plot_data(points):
     colors_14_days = ['#2980b9', '#16a085', '#8e44ad', '#c0392b']  # Стили для 14 дней
 
     for point_name, point in points.items():
-        labels = ['Подготовка', f'Транспортировка из пункта {point_name}', f'Транспортировка до пункта {point_name}', 'Выдача']
+        labels = ['Прием', f'Транспортировка из пункта {point_name}', f'Транспортировка до пункта {point_name}', 'Выдача']
         averages = point.calculate_averages()
 
         data_30 = [
